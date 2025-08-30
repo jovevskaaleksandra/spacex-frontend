@@ -1,53 +1,88 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <label>
-    First Name:
-    <input type="text" formControlName="firstName" />
-  </label>
-  <div
-    *ngIf="form.controls['firstName'].touched && form.controls['firstName'].hasError('required')"
-  >
-    First Name is required.
-  </div>
-  <div
-    *ngIf="form.controls['firstName'].touched && form.controls['firstName'].hasError('minlength')"
-  >
-    First Name must be at least 2 characters.
-  </div>
+<div class="signup-page d-flex align-items-center justify-content-center">
+  <div class="card glass-card p-5 w-100" style="max-width: 500px">
+    <h2 class="text-center mb-4 text-light">Register to view info about SpaceX missions!</h2>
 
-  <label>
-    Last Name:
-    <input type="text" formControlName="lastName" />
-  </label>
-  <div *ngIf="form.controls['lastName'].touched && form.controls['lastName'].hasError('required')">
-    Last Name is required.
-  </div>
-  <div *ngIf="form.controls['lastName'].touched && form.controls['lastName'].hasError('minlength')">
-    Last Name must be at least 2 characters.
-  </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- First Name -->
+      <div class="mb-3">
+        <label class="form-label text-light">First Name</label>
+        <input type="text" class="form-control" formControlName="firstName" />
+        <div
+          *ngIf="form.controls['firstName'].touched && form.controls['firstName'].invalid"
+          class="text-danger small"
+        >
+          First name is required (min 2 characters).
+        </div>
+      </div>
 
-  <label>
-    Email:
-    <input type="email" formControlName="email" />
-  </label>
-  <div *ngIf="form.controls['email'].touched && form.controls['email'].hasError('required')">
-    Email is required.
-  </div>
-  <div *ngIf="form.controls['email'].touched && form.controls['email'].hasError('email')">
-    Please enter a valid email.
-  </div>
+      <!-- Last Name -->
+      <div class="mb-3">
+        <label class="form-label text-light">Last Name</label>
+        <input type="text" class="form-control" formControlName="lastName" />
+        <div
+          *ngIf="form.controls['lastName'].touched && form.controls['lastName'].invalid"
+          class="text-danger small"
+        >
+          Last name is required (min 2 characters).
+        </div>
+      </div>
 
-  <label>
-    Password:
-    <input type="password" formControlName="password" />
-  </label>
-  <div *ngIf="form.controls['password'].touched && form.controls['password'].hasError('required')">
-    Password is required.
-  </div>
-  <div *ngIf="form.controls['password'].touched && form.controls['password'].hasError('minlength')">
-    Password must be at least 6 characters long.
-  </div>
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label text-light">Email</label>
+        <input type="email" class="form-control" formControlName="email" />
+        <div
+          *ngIf="form.controls['email'].touched && form.controls['email'].hasError('required')"
+          class="text-danger small"
+        >
+          Email is required.
+        </div>
+        <div
+          *ngIf="form.controls['email'].touched && form.controls['email'].hasError('email')"
+          class="text-danger small"
+        >
+          Please enter a valid email.
+        </div>
+      </div>
 
-  <button type="submit" [disabled]="form.invalid">Sign Up</button>
-</form>
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="form-label text-light">Password</label>
+        <input type="password" class="form-control" formControlName="password" />
+        <div
+          *ngIf="
+            form.controls['password'].touched && form.controls['password'].hasError('required')
+          "
+          class="text-danger small"
+        >
+          Password is required.
+        </div>
+        <div
+          *ngIf="
+            form.controls['password'].touched && form.controls['password'].hasError('minlength')
+          "
+          class="text-danger small"
+        >
+          Password must be at least 6 characters long.
+        </div>
+      </div>
 
-<p>{{ message }}</p>
+      <!-- Submit -->
+      <button type="submit" class="btn btn-primary w-100 py-2" [disabled]="form.invalid">
+        Sign Up
+      </button>
+    </form>
+
+    <!-- API message -->
+    <div
+      *ngIf="message"
+      class="alert mt-3"
+      [ngClass]="{
+        'alert-success': message.includes('success'),
+        'alert-danger': !message.includes('success')
+      }"
+    >
+      {{ message }}
+    </div>
+  </div>
+</div>

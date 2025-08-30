@@ -1,1 +1,55 @@
-<p>sign-in works!</p>
+<div class="signin-page d-flex align-items-center justify-content-center">
+  <div class="card glass-card p-5 w-100" style="max-width: 400px">
+    <h2 class="text-center mb-4 text-light">Sign in</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label text-light">Email</label>
+        <input type="email" class="form-control" formControlName="email" />
+        <div
+          *ngIf="form.controls['email'].touched && form.controls['email'].hasError('required')"
+          class="text-danger small"
+        >
+          Email is required.
+        </div>
+        <div
+          *ngIf="form.controls['email'].touched && form.controls['email'].hasError('email')"
+          class="text-danger small"
+        >
+          Please enter a valid email.
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="form-label text-light">Password</label>
+        <input type="password" class="form-control" formControlName="password" />
+        <div
+          *ngIf="
+            form.controls['password'].touched && form.controls['password'].hasError('required')
+          "
+          class="text-danger small"
+        >
+          Password is required.
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn btn-primary w-100 py-2" [disabled]="form.invalid">
+        Sign In
+      </button>
+    </form>
+
+    <div
+      *ngIf="message"
+      class="alert mt-3"
+      [ngClass]="{
+        'alert-success': message.includes('success'),
+        'alert-danger': !message.includes('success')
+      }"
+    >
+      {{ message }}
+    </div>
+  </div>
+</div>
