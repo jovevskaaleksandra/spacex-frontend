@@ -10,7 +10,7 @@
       <p><strong>Date:</strong> {{ launch.dateUtc | date : 'medium' }}</p>
       <p *ngIf="launch.details"><strong>Details:</strong> {{ launch.details }}</p>
       <p>
-        <strong>Status:</strong>
+        <strong>Mission status:</strong>
         <span [ngClass]="launch.success ? 'text-success' : 'text-danger'">
           {{ launch.success ? 'Success' : 'Failed' }}
         </span>

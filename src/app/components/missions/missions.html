@@ -1,0 +1,12 @@
+<div class="missions-page d-flex align-items-center justify-content-center">
+  <div class="card glass-card p-5 text-center">
+    <h2 class="mb-4 text-light">Welcome to our info site about SpaceX missions!</h2>
+    <h4 class="mb-4 text-light">Please choose what you need info for:</h4>
+
+    <div class="d-flex flex-column gap-3">
+      <button class="btn mission-btn btn-lg" (click)="goTo('latest')">Latest launch</button>
+      <button class="btn mission-btn btn-lg" (click)="goTo('upcoming')">Upcoming launches</button>
+      <button class="btn mission-btn btn-lg" (click)="goTo('past')">Past launches</button>
+    </div>
+  </div>
+</div>
