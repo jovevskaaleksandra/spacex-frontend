@@ -1,0 +1,53 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label>
+    First Name:
+    <input type="text" formControlName="firstName" />
+  </label>
+  <div
+    *ngIf="form.controls['firstName'].touched && form.controls['firstName'].hasError('required')"
+  >
+    First Name is required.
+  </div>
+  <div
+    *ngIf="form.controls['firstName'].touched && form.controls['firstName'].hasError('minlength')"
+  >
+    First Name must be at least 2 characters.
+  </div>
+
+  <label>
+    Last Name:
+    <input type="text" formControlName="lastName" />
+  </label>
+  <div *ngIf="form.controls['lastName'].touched && form.controls['lastName'].hasError('required')">
+    Last Name is required.
+  </div>
+  <div *ngIf="form.controls['lastName'].touched && form.controls['lastName'].hasError('minlength')">
+    Last Name must be at least 2 characters.
+  </div>
+
+  <label>
+    Email:
+    <input type="email" formControlName="email" />
+  </label>
+  <div *ngIf="form.controls['email'].touched && form.controls['email'].hasError('required')">
+    Email is required.
+  </div>
+  <div *ngIf="form.controls['email'].touched && form.controls['email'].hasError('email')">
+    Please enter a valid email.
+  </div>
+
+  <label>
+    Password:
+    <input type="password" formControlName="password" />
+  </label>
+  <div *ngIf="form.controls['password'].touched && form.controls['password'].hasError('required')">
+    Password is required.
+  </div>
+  <div *ngIf="form.controls['password'].touched && form.controls['password'].hasError('minlength')">
+    Password must be at least 6 characters long.
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Sign Up</button>
+</form>
+
+<p>{{ message }}</p>
