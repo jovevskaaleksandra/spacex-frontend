@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
   selector: 'app-welcome',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './welcome.html',
-  styleUrls: ['./welcome.css'],
+  templateUrl: './homepage.html',
+  styleUrls: ['./homepage.css'],
 })
 export class WelcomeComponent {
   constructor(private router: Router) {}
