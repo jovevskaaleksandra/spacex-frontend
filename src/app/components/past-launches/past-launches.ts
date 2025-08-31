@@ -23,8 +23,12 @@ export class PastLaunchesComponent implements OnInit {
         this.launches = data;
         this.loading = false;
       },
-      error: () => {
-        this.error = 'Failed to load past launches';
+      error: (err) => {
+        if (err.error?.message) {
+          this.error = err.error.message;
+        } else {
+          this.error = `Error ${err.status}: ${err.statusText}`;
+        }
         this.loading = false;
       },
     });

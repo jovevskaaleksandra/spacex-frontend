@@ -31,6 +31,10 @@ export class SignInComponent {
     this.authService.signIn(this.form.value).subscribe({
       next: (res: any) => {
         if (res.success) {
+          if (res.token) {
+            localStorage.setItem('jwt', res.token);
+          }
+
           this.router.navigate(['/missions']);
         } else {
           this.message = res.message;

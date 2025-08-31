@@ -24,7 +24,11 @@ export class LatestLaunchComponent implements OnInit {
         this.loading = false;
       },
       error: (err) => {
-        this.error = 'Failed to load latest launch';
+        if (err.error?.message) {
+          this.error = err.error.message;
+        } else {
+          this.error = `Error ${err.status}: ${err.statusText}`;
+        }
         this.loading = false;
       },
     });
