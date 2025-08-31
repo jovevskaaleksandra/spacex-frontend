@@ -11,11 +11,24 @@
   <h5 class="text-light">{{ launch.name }}</h5>
   <p class="text-light small">{{ launch.dateUtc | date : 'medium' }}</p>
 
-  <p *ngIf="launch.details" class="text-light small">
-    {{ launch.details }}
+  <p class="card-text">
+    {{
+      launch.details
+        ? showFull
+          ? launch.details
+          : (launch.details | slice : 0 : 120) + (launch.details.length > 120 ? '...' : '')
+        : 'No details available.'
+    }}
   </p>
 
-  <p>
+  <button
+    *ngIf="launch.details?.length > 120"
+    class="btn btn-sm btn-outline-light mt-2"
+    (click)="toggleDescription()"
+  >
+    {{ showFull ? 'Show less' : 'Read more' }}
+  </button>
+  <p class="card-text">
     <strong>Mission status:</strong>
     <span
       [ngClass]="

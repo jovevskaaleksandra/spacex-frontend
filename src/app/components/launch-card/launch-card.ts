@@ -9,5 +9,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./launch-card.css'],
 })
 export class LaunchCardComponent {
-  @Input() launch: any;
+  @Input() launch!: any;
+  showFull = false;
+
+  toggleDescription() {
+    this.showFull = !this.showFull;
+  }
 }
+const showFull = false;

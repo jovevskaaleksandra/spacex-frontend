@@ -13,3 +13,18 @@
 .glass-card p {
   margin: 0.25rem 0;
 }
+
+.card-text {
+  text-align: justify;
+  text-justify: inter-word;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.btn {
+  min-width: 110px;
+}
+
+.d-flex .btn {
+  white-space: nowrap;
+}
