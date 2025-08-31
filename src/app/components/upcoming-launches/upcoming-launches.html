@@ -1,0 +1,14 @@
+<div class="upcoming-launches-page">
+  <div class="container py-5">
+    <h2 class="text-center text-muted mb-4">Upcoming Launches</h2>
+
+    <div *ngIf="loading" class="text-center text-light">Loading...</div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+      <div *ngFor="let launch of launches" class="col">
+        <app-launch-card [launch]="launch"></app-launch-card>
+      </div>
+    </div>
+  </div>
+</div>

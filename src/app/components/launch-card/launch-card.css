@@ -1,0 +1,15 @@
+.glass-card {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+.glass-card h5 {
+  font-weight: 600;
+}
+
+.glass-card p {
+  margin: 0.25rem 0;
+}

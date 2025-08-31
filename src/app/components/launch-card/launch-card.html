@@ -1,0 +1,50 @@
+<div class="card glass-card h-100 text-center p-4">
+  <img
+    *ngIf="launch.patchImage"
+    [src]="launch.patchImage"
+    alt="Mission Patch"
+    class="img-fluid mx-auto mb-3"
+    style="max-height: 100px"
+  />
+
+  <h5 class="text-light">{{ launch.name }}</h5>
+  <p class="text-light small">{{ launch.dateUtc | date : 'medium' }}</p>
+
+  <p *ngIf="launch.details" class="text-light small">
+    {{ launch.details }}
+  </p>
+
+  <p>
+    <strong>Mission status:</strong>
+    <span
+      [ngClass]="
+        launch.success === true
+          ? 'text-success'
+          : launch.success === false
+          ? 'text-danger'
+          : 'text-warning'
+      "
+    >
+      {{ launch.success === true ? 'Success' : launch.success === false ? 'Failed' : 'Pending' }}
+    </span>
+  </p>
+
+  <div class="mt-3">
+    <a
+      *ngIf="launch.webcast"
+      [href]="launch.webcast"
+      target="_blank"
+      class="btn btn-danger me-2 btn-sm"
+    >
+      Watch webcast
+    </a>
+    <a
+      *ngIf="launch.wikipedia"
+      [href]="launch.wikipedia"
+      target="_blank"
+      class="btn btn-info btn-sm"
+    >
+      Read more
+    </a>
+  </div>
+</div>
