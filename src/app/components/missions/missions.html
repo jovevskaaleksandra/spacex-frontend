@@ -1,7 +1,12 @@
+<nav class="navbar navbar-dark bg-dark px-3 d-flex justify-content-between">
+  <span class="navbar-brand mb-0 h1 text-light"
+    >Welcome to our info site about SpaceX missions!</span
+  >
+  <button class="btn btn-outline-light" (click)="logout()">Sign Out</button>
+</nav>
 <div class="missions-page d-flex align-items-center justify-content-center">
   <div class="card glass-card p-5 text-center">
-    <h2 class="mb-4 text-light">Welcome to our info site about SpaceX missions!</h2>
-    <h4 class="mb-4 text-light">Please choose what you need info for:</h4>
+    <h4 class="mb-4 text-light">What you can read about:</h4>
 
     <div class="d-flex flex-column gap-3">
       <button class="btn mission-btn btn-lg" (click)="goTo('latest')">Latest launch</button>

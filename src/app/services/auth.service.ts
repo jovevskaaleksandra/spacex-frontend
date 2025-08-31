@@ -17,4 +17,8 @@ export class AuthService {
   signIn(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/signin`, data);
   }
+
+  signOut(): void {
+    localStorage.removeItem('jwt'); // избриши токен
+  }
 }

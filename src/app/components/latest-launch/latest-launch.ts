@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpaceXService } from '../../services/spacex.service';
 import { LaunchCardComponent } from '../launch-card/launch-card';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-latest-launch',
@@ -15,7 +16,7 @@ export class LatestLaunchComponent implements OnInit {
   loading = true;
   error = '';
 
-  constructor(private spaceXService: SpaceXService) {}
+  constructor(private spaceXService: SpaceXService, private location: Location) {}
 
   ngOnInit(): void {
     this.spaceXService.getLatestLaunch().subscribe({
@@ -32,5 +33,9 @@ export class LatestLaunchComponent implements OnInit {
         this.loading = false;
       },
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
