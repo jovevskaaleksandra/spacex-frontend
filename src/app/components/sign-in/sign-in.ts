@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,7 +15,7 @@ export class SignInComponent {
   form: FormGroup;
   message = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -29,8 +30,11 @@ export class SignInComponent {
 
     this.authService.signIn(this.form.value).subscribe({
       next: (res: any) => {
-        this.message = res.message || 'Signed in successfully';
-        console.log('User signed in:', res);
+        if (res.success) {
+          this.router.navigate(['/missions']);
+        } else {
+          this.message = res.message;
+        }
       },
       error: (err) => {
         if (err.error?.errors) {
