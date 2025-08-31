@@ -1,7 +1,8 @@
 <div class="card glass-card h-100 text-center p-4">
   <img
-    *ngIf="launch.patchImage"
-    [src]="launch.patchImage"
+    [src]="
+      launch.patchImage || 'https://www.hornetsecurity.com/app/uploads/2024/07/feature-fallback.png'
+    "
     alt="Mission Patch"
     class="img-fluid mx-auto mb-3"
     style="max-height: 100px"
