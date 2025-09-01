@@ -6,13 +6,14 @@ import { LatestLaunchComponent } from './components/latest-launch/latest-launch'
 import { MissionsComponent } from './components/missions/missions';
 import { UpcomingLaunchesComponent } from './components/upcoming-launches/upcoming-launches';
 import { PastLaunchesComponent } from './components/past-launches/past-launches';
+import { AuthGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signin', component: SignInComponent },
-  { path: 'latest', component: LatestLaunchComponent },
-  { path: 'missions', component: MissionsComponent },
-  { path: 'upcoming', component: UpcomingLaunchesComponent },
-  { path: 'past', component: PastLaunchesComponent },
+  { path: 'latest', component: LatestLaunchComponent, canActivate: [AuthGuard] },
+  { path: 'missions', component: MissionsComponent, canActivate: [AuthGuard] },
+  { path: 'upcoming', component: UpcomingLaunchesComponent, canActivate: [AuthGuard] },
+  { path: 'past', component: PastLaunchesComponent, canActivate: [AuthGuard] },
 ];
